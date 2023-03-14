@@ -72,7 +72,10 @@ export const Container = styled.div`
   }
 `
 
-export const Actions = styled.div``
+export const Actions = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`
 
 export const AddToCartButton = styled.button`
   display: flex;
