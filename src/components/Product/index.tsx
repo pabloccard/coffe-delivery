@@ -3,20 +3,27 @@ import coffe from '../../assets/coffe.svg'
 import { ShoppingCart } from 'phosphor-react'
 import { QuantitySelector } from '../QuantitySelector'
 import { useQuantitySelector } from '../../hooks/useQuantitySelector'
+import { Product as ProductData } from '../../types/Product'
 
-export const Product = () => {
+type ProductProps = {
+  data: ProductData
+}
+
+export const Product = ({
+  data: { title, description, price },
+}: ProductProps) => {
   const { value, handleChangeValue } = useQuantitySelector(1, 7, 1)
   return (
     <S.Container>
       <img src={coffe} alt="" />
       <span>tradicional</span>
       <main>
-        <h5>Expresso Tradicional</h5>
-        <p>O tradicional café feito com água quente e grãos moídos</p>
+        <h5>{title}</h5>
+        <p>{description}</p>
       </main>
       <footer>
         <span>
-          R$ <strong>9,90</strong>
+          R$ <strong>{price}</strong>
         </span>
 
         <S.Actions>

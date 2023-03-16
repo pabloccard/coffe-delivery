@@ -1,12 +1,12 @@
 import { Hero } from '../../components/Hero'
-import { Product } from '../../components/Product'
+import { ProductList } from '../../components/ProductList'
 import * as S from './styles'
 
 export function Home() {
-  console.log('home')
   return (
     <S.Container>
-      <Product />
+      <Hero />
+      <ProductList />
     </S.Container>
   )
 }
