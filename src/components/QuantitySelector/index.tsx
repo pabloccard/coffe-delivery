@@ -12,13 +12,13 @@ export const QuantitySelector = ({
 }: QuantitySelectorProps) => {
   return (
     <S.Container>
-      <button onClick={() => handleChangeValue(value - 1)}>
+      <button type="button" onClick={() => handleChangeValue(value - 1)}>
         <Minus weight="bold" />
       </button>
 
       <span>{value}</span>
 
-      <button>
+      <button type="button">
         <Plus weight="bold" onClick={() => handleChangeValue(value + 1)} />
       </button>
     </S.Container>
