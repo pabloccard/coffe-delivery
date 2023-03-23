@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,20 +14,6 @@ export const Container = styled.div`
 
   img {
     margin-top: -1.25rem;
-  }
-
-  > span {
-    margin-top: 0.75rem;
-    padding: 0.25rem 0.5rem;
-
-    background: ${(props) => props.theme['yellow-light']};
-    border-radius: 100px;
-
-    color: ${(props) => props.theme['yellow-dark']};
-    font-size: 0.65rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    line-height: 130%;
   }
 
   h5 {
@@ -69,6 +55,26 @@ export const Container = styled.div`
       font-weight: 800;
       font-size: 1.5rem;
     }
+  }
+`
+
+export const Tags = styled.div`
+  display: flex;
+  gap: 0.25rem;
+
+  margin-top: 0.75rem;
+
+  > span {
+    padding: 0.25rem 0.5rem;
+
+    background: ${(props) => props.theme['yellow-light']};
+    border-radius: 100px;
+
+    color: ${(props) => props.theme['yellow-dark']};
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    line-height: 130%;
   }
 `
 
