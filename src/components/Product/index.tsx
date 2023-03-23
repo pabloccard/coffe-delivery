@@ -1,7 +1,6 @@
 import * as S from './styles'
 import coffe from '../../assets/coffe.svg'
 import { ShoppingCart } from 'phosphor-react'
-import { QuantitySelector } from '../QuantitySelector'
 import { useQuantitySelector } from '../../hooks/useQuantitySelector'
 import { Product as ProductData } from '../../types/Product'
 
@@ -12,7 +11,11 @@ type ProductProps = {
 export const Product = ({
   data: { title, description, price },
 }: ProductProps) => {
-  const { value, handleChangeValue } = useQuantitySelector(1, 7, 1)
+  const { value, QuantitySelector } = useQuantitySelector({
+    defaultValue: 1,
+    maxValue: 7,
+    minValue: 1,
+  })
   return (
     <S.Container>
       <img src={coffe} alt="" />
@@ -27,10 +30,7 @@ export const Product = ({
         </span>
 
         <S.Actions>
-          <QuantitySelector
-            value={value}
-            handleChangeValue={handleChangeValue}
-          />
+          <QuantitySelector />
           <S.AddToCartButton>
             <ShoppingCart weight="fill" />
           </S.AddToCartButton>
