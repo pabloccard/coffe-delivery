@@ -10,7 +10,7 @@ type ProductProps = {
 }
 
 export const Product = ({
-  data: { title, description, price },
+  data: { title, description, price, img },
 }: ProductProps) => {
   const { value, QuantitySelector } = useQuantitySelector({
     defaultValue: 1,
@@ -19,7 +19,7 @@ export const Product = ({
   })
   return (
     <S.Container>
-      <img src={coffe} alt="" />
+      <img src={img} alt="" />
       <span>tradicional</span>
       <main>
         <h5>{title}</h5>
