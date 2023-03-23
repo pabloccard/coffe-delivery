@@ -3,6 +3,7 @@ import coffe from '../../assets/coffe.svg'
 import { ShoppingCart } from 'phosphor-react'
 import { useQuantitySelector } from '../../hooks/useQuantitySelector'
 import { Product as ProductData } from '../../types/Product'
+import { priceFormatter } from '../../utils/priceFormatter'
 
 type ProductProps = {
   data: ProductData
@@ -26,7 +27,7 @@ export const Product = ({
       </main>
       <footer>
         <span>
-          R$ <strong>{price}</strong>
+          R$ <strong>{priceFormatter(price)}</strong>
         </span>
 
         <S.Actions>
