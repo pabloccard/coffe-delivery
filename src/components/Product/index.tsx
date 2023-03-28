@@ -18,7 +18,10 @@ export const Product = ({
   })
   return (
     <S.Container>
-      <img src={img} alt="" />
+      <img
+        src="https://cdn.discordapp.com/attachments/1090313417727942709/1090313490620747988/Image_2.png"
+        alt=""
+      />
       <S.Tags>
         {tags.map((tag) => (
           <span key={tag}>{tag}</span>

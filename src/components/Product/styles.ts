@@ -14,6 +14,7 @@ export const Container = styled.li`
 
   img {
     margin-top: -1.25rem;
+    width: 120px;
   }
 
   h5 {
