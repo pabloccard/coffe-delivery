@@ -1,5 +1,5 @@
-export type Product = {
-  id: number
+export type ProductType = {
+  id: string
   title: string
   img: string
   tags: Array<string>

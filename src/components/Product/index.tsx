@@ -1,7 +1,7 @@
 import * as S from './styles'
 import { ShoppingCart } from 'phosphor-react'
 import { useQuantitySelector } from '../../hooks/useQuantitySelector'
-import { Product as ProductData } from '../../types/Product'
+import { ProductType as ProductData } from '../../types/Product'
 import { priceFormatter } from '../../utils/priceFormatter'
 
 type ProductProps = {
@@ -18,10 +18,7 @@ export const Product = ({
   })
   return (
     <S.Container>
-      <img
-        src="https://cdn.discordapp.com/attachments/1090313417727942709/1090313490620747988/Image_2.png"
-        alt=""
-      />
+      <img src={img} alt="" />
       <S.Tags>
         {tags.map((tag) => (
           <span key={tag}>{tag}</span>
