@@ -1,10 +1,41 @@
 import * as S from './styles'
 import { CartSession } from './components/CartSession'
-import { CurrencyDollar, MapPinLine } from 'phosphor-react'
+import {
+  Bank,
+  CreditCard,
+  CurrencyDollar,
+  MapPinLine,
+  Money,
+} from 'phosphor-react'
+import * as RadioGroup from '@radix-ui/react-radio-group'
+import { useForm, Controller } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
+
+const FormScheme = z.object({
+  zipCode: z.number(),
+  street: z.string(),
+  number: z.number(),
+  complement: z.string(),
+  neighborhood: z.string(),
+  city: z.string(),
+  state: z.string(),
+  paymentMethod: z.string(),
+})
+
+type FormData = z.infer<typeof FormScheme>
 
 export function Checkout() {
+  const { register, handleSubmit, control } = useForm<FormData>({
+    resolver: zodResolver(FormScheme),
+  })
+
+  function sub(data: FormData) {
+    console.log(data)
+  }
+
   return (
-    <S.Container>
+    <S.Container onSubmit={handleSubmit(sub)}>
       <div>
         <h2>Complete seu pedido</h2>
         <S.AddressSection>
@@ -16,15 +47,45 @@ export function Checkout() {
             </div>
           </S.SectionHeader>
           <S.InputsContainer>
-            <input type="number" id="zip-code" placeholder="CEP" />
-            <input type="text" id="street" placeholder="Rua" />
-            <input type="number" id="number" placeholder="Número" />
+            <input
+              {...register('zipCode', { valueAsNumber: true })}
+              type="number"
+              id="zip-code"
+              placeholder="CEP"
+            />
+            <input
+              {...register('street')}
+              type="text"
+              id="street"
+              placeholder="Rua"
+            />
+            <input
+              {...register('number', { valueAsNumber: true })}
+              type="number"
+              id="number"
+              placeholder="Número"
+            />
             <label>
-              <input type="text" id="complement" placeholder="Complemento" />
+              <input
+                {...register('complement')}
+                type="text"
+                id="complement"
+                placeholder="Complemento"
+              />
             </label>
-            <input type="text" id="" placeholder="Bairro" />
-            <input type="text" id="" placeholder="Cidade" />
-            <input type="text" id="" placeholder="UF" />
+            <input
+              {...register('neighborhood')}
+              type="text"
+              id=""
+              placeholder="Bairro"
+            />
+            <input
+              {...register('city')}
+              type="text"
+              id=""
+              placeholder="Cidade"
+            />
+            <input {...register('state')} type="text" id="" placeholder="UF" />
           </S.InputsContainer>
         </S.AddressSection>
 
@@ -38,9 +99,30 @@ export function Checkout() {
               </p>
             </div>
           </S.SectionHeader>
+
+          <Controller
+            control={control}
+            name="paymentMethod"
+            rules={{ required: true }}
+            render={({ field: { onChange, value } }) => (
+              <S.PaymentOptions value={value} onValueChange={onChange}>
+                <RadioGroup.Item defaultChecked value="crédito">
+                  <CreditCard weight="regular" />
+                  Cartão de crédito
+                </RadioGroup.Item>
+                <RadioGroup.Item value="débito">
+                  <Bank weight="regular" />
+                  Cartão de débito
+                </RadioGroup.Item>
+                <RadioGroup.Item value="dinheiro">
+                  <Money weight="regular" />
+                  Dinheiro
+                </RadioGroup.Item>
+              </S.PaymentOptions>
+            )}
+          />
         </S.PaymentSection>
       </div>
-
       <div>
         <h2>Cafés selecionados</h2>
         <CartSession />

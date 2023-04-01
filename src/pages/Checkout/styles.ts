@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import * as RadioGroup from '@radix-ui/react-radio-group'
 
 export const Container = styled.form`
   width: 70rem;
@@ -87,6 +88,44 @@ export const PaymentSection = styled.section`
 type SectionHeaderProps = {
   iconColor: 'yellow-dark' | 'purple'
 }
+
+export const PaymentOptions = styled(RadioGroup.Root)`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.75rem;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.75rem;
+
+    height: 3.25rem;
+
+    background: ${(props) => props.theme['base-button']};
+    border: 1px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    padding-left: 1rem;
+
+    color: ${(props) => props.theme['base-text']};
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+
+    &[data-state='checked'] {
+      background-color: ${(props) => props.theme['purple-light']};
+      border-color: ${(props) => props.theme.purple};
+    }
+
+    svg {
+      font-size: 1rem;
+      color: ${(props) => props.theme.purple};
+    }
+  }
+`
 
 export const SectionHeader = styled.header<SectionHeaderProps>`
   display: flex;

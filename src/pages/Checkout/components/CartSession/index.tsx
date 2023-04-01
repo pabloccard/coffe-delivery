@@ -1,29 +1,41 @@
+import { useCart } from '../../../../hooks/useCart'
+import { priceFormatter } from '../../../../utils/priceFormatter'
 import { CartItem } from '../CartItem'
 import * as S from './styles'
 
 export const CartSession = () => {
+  const { cart } = useCart()
+
+  const total = cart.reduce((acc, item) => {
+    acc += item.price * item.amount
+    return acc
+  }, 0)
+
+  const totalFormated = priceFormatter(total, { formatToBRL: true })
+
   return (
     <S.Container>
       <S.ListItems>
-        <CartItem />
-        <CartItem />
+        {cart.map((item) => (
+          <CartItem key={item.id} data={item} />
+        ))}
       </S.ListItems>
 
       <footer>
-        <S.PurchaseCostDetails>
+        <S.SummaryDetails>
           <span>Total de itens</span>
-          <span>R$ 29,70</span>
-        </S.PurchaseCostDetails>
+          <span>{totalFormated}</span>
+        </S.SummaryDetails>
 
-        <S.PurchaseCostDetails>
+        <S.SummaryDetails>
           <span>Entrega</span>
-          <span>R$ 3,50</span>
-        </S.PurchaseCostDetails>
+          <span>R$ 0,00</span>
+        </S.SummaryDetails>
 
-        <S.TotalCost>
+        <S.Total>
           <strong>Total</strong>
-          <strong>R$ 33,20</strong>
-        </S.TotalCost>
+          <strong>{totalFormated}</strong>
+        </S.Total>
 
         <S.SubmitButton type="submit">Confirmar pedido</S.SubmitButton>
       </footer>

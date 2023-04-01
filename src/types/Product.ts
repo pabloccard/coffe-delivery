@@ -7,10 +7,10 @@ export type ProductType = {
   price: number
 }
 
-export type ProductCart = {
-  id: number
+export type CartProduct = {
+  id: string
   title: string
   price: number
-  image: string
+  img: string
   amount: number
 }

@@ -3,19 +3,31 @@ import { ShoppingCart } from 'phosphor-react'
 import { useQuantitySelector } from '../../hooks/useQuantitySelector'
 import { ProductType as ProductData } from '../../types/Product'
 import { priceFormatter } from '../../utils/priceFormatter'
+import { useCart } from '../../hooks/useCart'
 
 type ProductProps = {
   data: ProductData
 }
 
 export const Product = ({
-  data: { title, description, price, img, tags },
+  data: { title, description, price, img, tags, id },
 }: ProductProps) => {
-  const { value, QuantitySelector } = useQuantitySelector({
+  const {
+    value: quantity,
+    setValue,
+    QuantitySelector,
+  } = useQuantitySelector({
     defaultValue: 1,
     maxValue: 7,
     minValue: 1,
   })
+
+  const { addProduct } = useCart()
+
+  function handleAddProduct() {
+    addProduct(id, quantity)
+    setValue(1)
+  }
   return (
     <S.Container>
       <img src={img} alt="" />
@@ -36,7 +48,7 @@ export const Product = ({
 
         <S.Actions>
           <QuantitySelector />
-          <S.AddToCartButton>
+          <S.AddToCartButton onClick={handleAddProduct}>
             <ShoppingCart weight="fill" />
           </S.AddToCartButton>
         </S.Actions>

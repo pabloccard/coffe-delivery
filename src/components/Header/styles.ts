@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const Container = styled.header`
   display: flex;
@@ -36,17 +37,39 @@ export const Container = styled.header`
       font-size: 1.375rem;
     }
   }
+`
+export const CheckoutLink = styled(NavLink)`
+  display: inline-block;
 
-  a {
-    display: inline-block;
-    height: 2.375rem;
-    width: 2.375rem;
-    padding: 0.5rem;
+  position: relative;
 
-    background: ${(props) => props.theme['yellow-light']};
-    border-radius: 6px;
+  height: 2.375rem;
+  width: 2.375rem;
+  padding: 0.5rem;
 
-    color: ${(props) => props.theme['yellow-dark']};
-    font-size: 1.375rem;
-  }
+  background: ${(props) => props.theme['yellow-light']};
+  border-radius: 6px;
+
+  color: ${(props) => props.theme['yellow-dark']};
+  font-size: 1.375rem;
+`
+
+export const Counter = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 1.25rem;
+  height: 1.25rem;
+
+  position: absolute;
+  top: -8px;
+  right: -8.35px;
+
+  background: #c47f17;
+  border-radius: 1000px;
+
+  color: ${(props) => props.theme.white};
+  font-size: 0.75rem;
+  font-weight: bold;
 `

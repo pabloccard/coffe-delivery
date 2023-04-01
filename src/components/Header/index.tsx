@@ -1,20 +1,30 @@
 import * as S from './styles'
 import logo from '../../assets/logo.svg'
 import { MapPin, ShoppingCart } from 'phosphor-react'
+import { NavLink } from 'react-router-dom'
+import { useCart } from '../../hooks/useCart'
 
 export const Header = () => {
+  const { cart } = useCart()
+
+  const totalItems = cart.length
+
   return (
     <S.Container>
-      <img src={logo} alt="Coffe Delivery" />
+      <NavLink to="/">
+        <img src={logo} alt="Coffe Delivery" />
+      </NavLink>
 
       <div>
         <button>
           <MapPin weight="fill" />
           Porto Alegre, RS
         </button>
-        <a href="/carrinho">
+
+        <S.CheckoutLink to="/checkout">
           <ShoppingCart weight="fill" />
-        </a>
+          {totalItems > 0 && <S.Counter>{totalItems}</S.Counter>}
+        </S.CheckoutLink>
       </div>
     </S.Container>
   )

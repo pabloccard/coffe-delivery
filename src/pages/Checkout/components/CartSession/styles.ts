@@ -12,7 +12,7 @@ export const ListItems = styled.ul`
   margin-bottom: 3rem;
 `
 
-export const PurchaseCostDetails = styled.div`
+export const SummaryDetails = styled.div`
   display: flex;
   justify-content: space-between;
 
@@ -26,7 +26,7 @@ export const PurchaseCostDetails = styled.div`
   }
 `
 
-export const TotalCost = styled.div`
+export const Total = styled.div`
   display: flex;
   justify-content: space-between;
 
