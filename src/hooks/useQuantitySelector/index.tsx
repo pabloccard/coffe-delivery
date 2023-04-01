@@ -5,15 +5,25 @@ import * as S from './styles'
 export function useQuantitySelector({
   minValue,
   maxValue,
-  defaultValue = 1,
+  defaultValue,
+  onDecrement,
+  onIncrement,
 }: {
   minValue: number
   maxValue: number
   defaultValue: number
+  onDecrement?(): void
+  onIncrement?(): void
 }) {
-  const [value, setValue] = useState(defaultValue)
+  const [value, setValue] = useState<number>(defaultValue)
 
   function handleChangeValue(newValue: number) {
+    if (newValue >= minValue && newValue <= maxValue) {
+      setValue(newValue)
+    }
+  }
+
+  function handleSetValue(newValue: number) {
     if (newValue >= minValue && newValue <= maxValue) {
       setValue(newValue)
     }
@@ -22,18 +32,32 @@ export function useQuantitySelector({
   const QuantitySelector = () => {
     return (
       <S.Container>
-        <button type="button" onClick={() => handleChangeValue(value - 1)}>
+        <button
+          type="button"
+          disabled={value === minValue}
+          onClick={() => {
+            handleChangeValue(value - 1)
+            onDecrement && onDecrement()
+          }}
+        >
           <Minus weight="bold" />
         </button>
 
         <span>{value}</span>
 
-        <button type="button">
-          <Plus weight="bold" onClick={() => handleChangeValue(value + 1)} />
+        <button
+          type="button"
+          disabled={value === maxValue}
+          onClick={() => {
+            handleChangeValue(value + 1)
+            onIncrement && onIncrement()
+          }}
+        >
+          <Plus weight="bold" />
         </button>
       </S.Container>
     )
   }
 
-  return { value, QuantitySelector }
+  return { value, QuantitySelector, setValue: handleSetValue }
 }
