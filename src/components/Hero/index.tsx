@@ -13,35 +13,36 @@ export const Hero = () => {
             hora
           </p>
         </header>
-
-        <S.AdvantagesList>
-          <S.AdvantageItem iconBackground="yellow-dark">
-            <span>
-              <ShoppingCart weight="fill" />
-            </span>
-            Compra simples e segura
-          </S.AdvantageItem>
-          <S.AdvantageItem iconBackground="gray">
-            <span>
-              <Package weight="fill" />
-            </span>
-            Embalagem mantém o café intacto
-          </S.AdvantageItem>
-          <S.AdvantageItem iconBackground="yellow">
-            <span>
-              <Timer weight="fill" />
-            </span>
-            Entrega rápida e rastreada
-          </S.AdvantageItem>
-          <S.AdvantageItem iconBackground="purple">
-            <span>
-              <Coffee weight="fill" />
-            </span>
-            O café chega fresquinho até você
-          </S.AdvantageItem>
-        </S.AdvantagesList>
       </S.Content>
+
       <img src={image} alt="copo de café expresso com grãos de café ao fundo" />
+
+      <S.AdvantagesList>
+        <S.AdvantageItem iconBackground="yellow-dark">
+          <span>
+            <ShoppingCart weight="fill" />
+          </span>
+          Compra simples e segura
+        </S.AdvantageItem>
+        <S.AdvantageItem iconBackground="gray">
+          <span>
+            <Package weight="fill" />
+          </span>
+          Embalagem mantém o café intacto
+        </S.AdvantageItem>
+        <S.AdvantageItem iconBackground="yellow">
+          <span>
+            <Timer weight="fill" />
+          </span>
+          Entrega rápida e rastreada
+        </S.AdvantageItem>
+        <S.AdvantageItem iconBackground="purple">
+          <span>
+            <Coffee weight="fill" />
+          </span>
+          O café chega fresquinho até você
+        </S.AdvantageItem>
+      </S.AdvantagesList>
     </S.Container>
   )
 }
