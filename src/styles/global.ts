@@ -9,6 +9,17 @@ export const GlobalStyles = createGlobalStyle`
 
     body {
         font-family: 'Roboto', sans-serif;
+        
+    }
+
+    html, body, #root {
+        max-height: 100vh;
+        max-width: 100vw;
+
+        height: 100%;
+        width: 100%;
+
+      
     }
 
 `

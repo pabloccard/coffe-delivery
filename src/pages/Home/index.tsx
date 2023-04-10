@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import { Hero } from '../../components/Hero'
 import { ProductList } from '../../components/ProductList'
 import { ProductType } from '../../types/Product'
 import * as S from './styles'
+import { Hero } from '../../components/Hero'
 
 export function Home() {
   const [products, setProducts] = useState<ProductType[]>([])
@@ -23,7 +23,7 @@ export function Home() {
   return (
     <S.Container>
       <Hero />
-      <ProductList products={products} />
+      {/* <ProductList products={products} /> */}
     </S.Container>
   )
 }
