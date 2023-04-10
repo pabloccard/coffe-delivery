@@ -4,13 +4,18 @@ export const Container = styled.li`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 
-  width: 16rem;
-  height: 19.375rem;
-  padding: 0 1.125rem;
+  /* width: 16rem; */
+  width: 100%;
+  /* height: 16rem; */
+  /* height: 19.375rem; */
+  padding: 0 1.125rem 1.125rem;
 
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px 36px;
+
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
 
   img {
     margin-top: -1.25rem;
@@ -18,7 +23,7 @@ export const Container = styled.li`
   }
 
   h5 {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
 
     color: ${(props) => props.theme['base-subtitle']};
     font-family: 'Baloo 2', sans-serif;
@@ -29,7 +34,7 @@ export const Container = styled.li`
   }
 
   p {
-    margin-top: 0.5rem;
+    margin-top: 0.25rem;
 
     color: ${(props) => props.theme['base-label']};
     font-size: 0.875rem;
@@ -38,7 +43,7 @@ export const Container = styled.li`
   }
 
   footer {
-    margin-top: 2rem;
+    margin-top: 1rem;
     width: 13rem;
 
     display: flex;

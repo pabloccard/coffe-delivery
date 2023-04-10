@@ -23,7 +23,7 @@ export function Home() {
   return (
     <S.Container>
       <Hero />
-      {/* <ProductList products={products} /> */}
+      <ProductList products={products} />
     </S.Container>
   )
 }
