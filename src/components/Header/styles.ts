@@ -16,8 +16,7 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: all 0s;
 
   div {
     display: flex;
@@ -29,6 +28,7 @@ export const Container = styled.header`
     background-color: ${(props) => props.theme.white};
 
     box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
   }
 
   button {
