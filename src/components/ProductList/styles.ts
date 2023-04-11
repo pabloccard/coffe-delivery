@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
-  position: sticky;
-  top: 15rem;
   margin-top: 5rem;
+  background: ${(props) => props.theme.white};
 
   h2 {
     color: ${(props) => props.theme['base-subtitle']};
@@ -15,6 +14,9 @@ export const Container = styled.section`
     margin-bottom: 2rem;
     /* margin-bottom: 3.375rem; */
   }
+
+  /* height: 100vh; */
+  overflow-y: hidden;
 `
 export const ListItems = styled.div`
   /* display: grid;
@@ -25,4 +27,8 @@ export const ListItems = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
+
+  overflow-y: auto;
+  height: calc(65vh);
+  padding-top: 1rem;
 `
