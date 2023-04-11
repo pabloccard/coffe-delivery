@@ -20,7 +20,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       const amount = product ? product.amount + quantity : quantity
 
       if (product) {
-        product.amount = amount
+        product.amount = amount >= 9 ? 9 : amount
       } else {
         const response = await fetch(
           `https://my-json-server.typicode.com/pabloccard/coffe-delivery-api/products/${id}`,

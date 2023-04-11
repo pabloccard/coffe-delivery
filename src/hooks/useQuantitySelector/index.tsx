@@ -34,7 +34,7 @@ export function useQuantitySelector({
       <S.Container>
         <button
           type="button"
-          disabled={value === minValue}
+          disabled={value <= minValue}
           onClick={() => {
             handleChangeValue(value - 1)
             onDecrement && onDecrement()
@@ -47,7 +47,7 @@ export function useQuantitySelector({
 
         <button
           type="button"
-          disabled={value === maxValue}
+          disabled={value >= maxValue}
           onClick={() => {
             handleChangeValue(value + 1)
             onIncrement && onIncrement()

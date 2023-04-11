@@ -36,7 +36,7 @@ export function Checkout() {
 
   return (
     <S.Container onSubmit={handleSubmit(sub)}>
-      <div>
+      {/* <div>
         <h2>Complete seu pedido</h2>
         <S.AddressSection>
           <S.SectionHeader iconColor="yellow-dark">
@@ -122,7 +122,7 @@ export function Checkout() {
             )}
           />
         </S.PaymentSection>
-      </div>
+      </div> */}
       <div>
         <h2>Cafés selecionados</h2>
         <CartSession />

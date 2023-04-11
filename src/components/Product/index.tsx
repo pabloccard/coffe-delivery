@@ -18,7 +18,7 @@ export const Product = ({
     QuantitySelector,
   } = useQuantitySelector({
     defaultValue: 1,
-    maxValue: 7,
+    maxValue: 9,
     minValue: 1,
   })
 

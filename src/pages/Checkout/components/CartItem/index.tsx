@@ -14,7 +14,7 @@ export const CartItem = ({
 
   const { QuantitySelector } = useQuantitySelector({
     defaultValue: amount,
-    maxValue: 7,
+    maxValue: 9,
     minValue: 1,
     onIncrement: () => updateProductAmount(id, amount + 1),
     onDecrement: () => updateProductAmount(id, amount - 1),

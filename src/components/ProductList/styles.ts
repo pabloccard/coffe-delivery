@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.section`
+  position: sticky;
+  top: 15rem;
   margin-top: 5rem;
 
   h2 {
