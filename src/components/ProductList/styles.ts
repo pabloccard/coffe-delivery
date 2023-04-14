@@ -12,11 +12,7 @@ export const Container = styled.section`
 
     line-height: 130%;
     margin-bottom: 2rem;
-    /* margin-bottom: 3.375rem; */
   }
-
-  /* height: 100vh; */
-  overflow-y: hidden;
 `
 export const ListItems = styled.div`
   /* display: grid;
@@ -29,6 +25,6 @@ export const ListItems = styled.div`
   gap: 2.5rem;
 
   overflow-y: auto;
-  height: calc(65vh);
+
   padding-top: 1rem;
 `

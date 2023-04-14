@@ -38,7 +38,7 @@ export const CartItem = ({
           <QuantitySelector />
           <button type="button" onClick={handleRemoveProduct}>
             <Trash />
-            REMOVER
+            <span>REMOVER</span>
           </button>
         </S.Actions>
       </S.Content>

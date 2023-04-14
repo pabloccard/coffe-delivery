@@ -1,15 +1,16 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 23rem;
-  height: 5rem;
+  /* width: 23rem; */
+  /* height: 5rem; */
   position: relative;
 
   display: flex;
   align-items: center;
+  /* align-items: flex-start; */
   gap: 1.25rem;
 
-  padding: 0.5rem 0.25rem;
+  /* padding: 0.5rem 0.25rem; */
 
   & + div {
     margin-top: 3rem;
@@ -18,7 +19,8 @@ export const Container = styled.div`
   &::before {
     content: '';
 
-    width: 23rem;
+    /* width: 23rem; */
+    width: 100%;
     height: 1px;
     position: absolute;
     left: 0;
@@ -37,7 +39,9 @@ export const Image = styled.img`
 
 export const Header = styled.header`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* justify-content: space-between; */
 
   margin-bottom: 0.5rem;
 
@@ -49,6 +53,7 @@ export const Header = styled.header`
   strong {
     color: ${(props) => props.theme['base-text']};
     line-height: 130%;
+    font-size: 0.875rem;
   }
 `
 
@@ -79,6 +84,10 @@ export const Actions = styled.div`
     svg {
       color: ${(props) => props.theme.purple};
       font-size: 1rem;
+    }
+
+    span {
+      display: none;
     }
   }
 `

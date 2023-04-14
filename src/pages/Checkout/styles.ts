@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 
 export const Container = styled.form`
-  width: 70rem;
-  padding: 1.5rem 0;
+  /* width: 70rem; */
+  width: 100%;
+  padding-top: 8rem;
 
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-column-gap: 2rem;
 
   h2 {

@@ -15,8 +15,6 @@ export const Container = styled.section`
 
   /* padding: 5.75rem 0; */
 
-  padding-top: 11.75rem;
-
   img {
     width: 320px;
   }
