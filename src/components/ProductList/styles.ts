@@ -15,16 +15,20 @@ export const Container = styled.section`
   }
 `
 export const ListItems = styled.div`
-  /* display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-column-gap: 2rem;
-  grid-row-gap: 2.5rem; */
-
-  display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-
-  overflow-y: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 2.5rem;
+  column-gap: 2rem;
 
   padding-top: 1rem;
+
+  @media (min-width: 592px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (min-width: 880px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (min-width: 1168px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
 `

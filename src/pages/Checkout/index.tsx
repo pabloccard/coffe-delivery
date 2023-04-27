@@ -6,11 +6,14 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
+  CaretCircleDoubleDown,
+  CaretDown,
 } from 'phosphor-react'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
+import { useState } from 'react'
 
 const FormScheme = z.object({
   zipCode: z.number(),
@@ -26,6 +29,8 @@ const FormScheme = z.object({
 type FormData = z.infer<typeof FormScheme>
 
 export function Checkout() {
+  const [addressSectionExpanded, setAddressSectionExpanded] = useState(false)
+
   const { register, handleSubmit, control } = useForm<FormData>({
     resolver: zodResolver(FormScheme),
   })
@@ -36,7 +41,7 @@ export function Checkout() {
 
   return (
     <S.Container onSubmit={handleSubmit(sub)}>
-      {/* <div>
+      <div>
         <h2>Complete seu pedido</h2>
         <S.AddressSection>
           <S.SectionHeader iconColor="yellow-dark">
@@ -45,8 +50,15 @@ export function Checkout() {
               <h3>Endereço de Entrega</h3>
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
+            <S.SectionActionButton
+              onClick={() => setAddressSectionExpanded((prev) => !prev)}
+            >
+              <CaretDown weight="fill" />
+            </S.SectionActionButton>
           </S.SectionHeader>
-          <S.InputsContainer>
+          <S.InputsContainer
+            className={addressSectionExpanded ? 'expanded' : ''}
+          >
             <input
               {...register('zipCode', { valueAsNumber: true })}
               type="number"
@@ -63,7 +75,7 @@ export function Checkout() {
               {...register('number', { valueAsNumber: true })}
               type="number"
               id="number"
-              placeholder="Número"
+              placeholder="Nº"
             />
             <label>
               <input
@@ -76,7 +88,7 @@ export function Checkout() {
             <input
               {...register('neighborhood')}
               type="text"
-              id=""
+              id="neighborhood"
               placeholder="Bairro"
             />
             <input
@@ -89,7 +101,7 @@ export function Checkout() {
           </S.InputsContainer>
         </S.AddressSection>
 
-        <S.PaymentSection>
+        {/* <S.PaymentSection>
           <S.SectionHeader iconColor="purple">
             <CurrencyDollar weight="regular" />
             <div>
@@ -121,8 +133,8 @@ export function Checkout() {
               </S.PaymentOptions>
             )}
           />
-        </S.PaymentSection>
-      </div> */}
+        </S.PaymentSection> */}
+      </div>
       <div>
         <h2>Cafés selecionados</h2>
         <CartSession />

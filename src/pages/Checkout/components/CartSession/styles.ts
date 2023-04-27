@@ -5,7 +5,8 @@ export const Container = styled.section`
   width: 100%;
 
   background: ${(props) => props.theme['base-card']};
-  padding: 2.5rem;
+  /* padding: 2.5rem; */
+  padding: 1.5rem;
   border-radius: 6px 44px;
 `
 

@@ -5,52 +5,110 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4rem;
+  gap: 3rem;
 
-  /* display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 3.5rem;
+  position: relative;
 
-  width: 100%;*/
+  > img {
+    width: min(476px, 100%);
+  }
 
-  /* padding: 5.75rem 0; */
+  @media (min-width: 1024px) {
+    align-items: flex-start;
+    gap: 0;
 
-  img {
-    width: 320px;
+    > img {
+      width: 380px;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  @media (min-width: 1168px) {
+    > img {
+      width: unset;
+    }
   }
 `
 
 export const Content = styled.div`
+  max-width: 26.25rem;
+
   h1 {
     text-align: center;
-    /* margin-bottom: 1rem; */
 
     color: ${(props) => props.theme['base-title']};
     font-family: 'Baloo 2', sans-serif;
     font-weight: 800;
-    font-size: 1.875rem;
+    font-size: 2.625rem;
     line-height: 130%;
+
+    span:first-child {
+      display: none;
+    }
+
+    span:last-child {
+      text-transform: capitalize;
+    }
   }
 
   p {
     display: none;
-    text-align: center;
     color: ${(props) => props.theme['base-subtitle']};
     font-family: 'Roboto';
-    font-size: 0.875rem;
+    font-size: 1.25rem;
     line-height: 130%;
+  }
+
+  @media (min-width: 768px) {
+    max-width: none;
+
+    h1 {
+      font-size: 3rem;
+
+      span:first-child {
+        display: inline;
+      }
+
+      span:last-child {
+        text-transform: none;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 37.5rem;
+
+    h1 {
+      text-align: left;
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1168px) {
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 3rem;
+    }
+
+    p {
+      display: inline;
+    }
   }
 `
 
 export const AdvantagesList = styled.ul`
   list-style: none;
-  /* margin-top: 4.125rem; */
+  margin-top: 1rem;
 
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 1fr 1fr;
   justify-items: flex-start;
-  row-gap: 1.25rem;
-  column-gap: 2.5rem;
+  row-gap: 0.75rem;
+
+  @media (min-width: 1168px) {
+    margin-top: 4.125rem;
+  }
 `
 
 type AdvantageItemProps = {
@@ -63,7 +121,8 @@ export const AdvantageItem = styled.li<AdvantageItemProps>`
   gap: 0.75rem;
 
   color: ${(props) => props.theme['base-text']};
-  font-size: 12px;
+  font-size: min(1rem, max(1.4vw, 0.875rem));
+
   span {
     display: flex;
     padding: 0.5rem;

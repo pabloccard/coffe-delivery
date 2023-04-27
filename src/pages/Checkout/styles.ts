@@ -22,28 +22,53 @@ export const Container = styled.form`
   }
 `
 
+export const SectionActionButton = styled.button`
+  line-height: 0;
+  border: 0;
+  padding: 0.5rem;
+  background-color: ${(props) => props.theme['base-button']};
+  border-radius: 6px;
+  font-size: 1.375rem;
+  margin-left: auto;
+  color: ${(props) => props.theme.white};
+`
+
 export const AddressSection = styled.section`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
-  padding: 2.5rem;
+  /* padding: 2.5rem; */
+  padding: 1.5rem;
+  margin-bottom: 2rem;
 `
 
 export const InputsContainer = styled.div`
-  display: grid;
-  grid-template-columns: 200px 276px 60px;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  display: none;
+  margin-top: 2rem;
+  grid-template-columns: 75% calc(25% - 0.75rem);
+  /* grid-template-columns: 200px 276px 60px; */
+  /* grid-template-rows: 1fr 1fr 1fr 1fr; */
   grid-column-gap: 0.75rem;
   grid-row-gap: 1rem;
 
-  input[id='zip-code'] {
-    grid-column: 1;
+  &.expanded {
+    display: grid;
   }
-  input[id='street'] {
+
+  input[id='zip-code'],
+  input[id='street'],
+  label {
+    grid-column: 1/3;
+  }
+  input[id='neighborhood'] {
+    grid-row: 3;
+  }
+
+  /* input[id='street'] {
     grid-column: 1/4;
-  }
-  input[id='number'] {
+  } */
+  /* input[id='number'] {
     grid-column: 1;
-  }
+  } */
 
   input {
     background: ${(props) => props.theme['base-input']};
@@ -59,7 +84,7 @@ export const InputsContainer = styled.div`
   }
 
   label {
-    grid-column: 2/4;
+    /* grid-column: 2/4; */
 
     position: relative;
 
@@ -130,17 +155,20 @@ export const PaymentOptions = styled(RadioGroup.Root)`
 
 export const SectionHeader = styled.header<SectionHeaderProps>`
   display: flex;
-  gap: 0.5rem;
+  width: 100%;
+  align-items: center;
+  /* gap: 0.5rem; */
 
-  margin-bottom: 2rem;
-  height: 2.75rem;
+  /* margin-bottom: 2rem; */
+  /* height: 2.75rem; */
 
-  svg {
+  > svg {
     color: ${(props) =>
       props.iconColor === 'yellow-dark'
         ? props.theme['yellow-dark']
         : props.theme.purple};
     font-size: 1.375rem;
+    margin-right: 0.5rem;
   }
 
   h3 {
@@ -154,5 +182,6 @@ export const SectionHeader = styled.header<SectionHeaderProps>`
     color: ${(props) => props.theme['base-text']};
     font-size: 0.875rem;
     line-height: 21px;
+    display: none;
   }
 `

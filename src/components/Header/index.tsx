@@ -30,21 +30,23 @@ export const Header = () => {
 
   return (
     <S.Container className={`${scrolled ? 'scrolled' : ''}`}>
-      <NavLink to="/">
-        <img src={logo} alt="Coffe Delivery" />
-      </NavLink>
+      <S.Content>
+        <NavLink to="/">
+          <img src={logo} alt="Coffe Delivery" />
+        </NavLink>
 
-      <div>
-        <button>
-          <MapPin weight="fill" />
-          Porto Alegre, RS
-        </button>
+        <div>
+          <button>
+            <MapPin weight="fill" />
+            Porto Alegre, RS
+          </button>
 
-        <S.CheckoutLink to="/checkout">
-          <ShoppingCart weight="fill" />
-          {totalItems > 0 && <S.Counter>{totalItems}</S.Counter>}
-        </S.CheckoutLink>
-      </div>
+          <S.CheckoutLink to="/checkout">
+            <ShoppingCart weight="fill" />
+            {totalItems > 0 && <S.Counter>{totalItems}</S.Counter>}
+          </S.CheckoutLink>
+        </div>
+      </S.Content>
     </S.Container>
   )
 }

@@ -3,32 +3,31 @@ import { NavLink } from 'react-router-dom'
 
 export const Container = styled.header`
   width: 100%;
-  padding: 2rem 1.5rem;
-
-  z-index: 2;
+  z-index: 100;
 
   position: fixed;
   left: 0;
   top: 0;
 
-  background: transparent;
-
+  &.scrolled {
+    background-color: ${(props) => props.theme.white};
+    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+`
+export const Content = styled.div`
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  transition: all 0s;
+  align-items: center;
+
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
 
   div {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-  }
-
-  &.scrolled {
-    background-color: ${(props) => props.theme.white};
-
-    box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease-in-out;
   }
 
   button {
@@ -54,6 +53,7 @@ export const Container = styled.header`
     }
   }
 `
+
 export const CheckoutLink = styled(NavLink)`
   display: inline-block;
 

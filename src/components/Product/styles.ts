@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.li`
+  width: 100%;
+  height: 19.375rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
 
-  /* width: 16rem; */
-  width: 100%;
-  /* height: 16rem; */
-  /* height: 19.375rem; */
   padding: 0 1.125rem 1.125rem;
 
   background: ${(props) => props.theme['base-card']};
@@ -77,7 +76,7 @@ export const Tags = styled.div`
     border-radius: 100px;
 
     color: ${(props) => props.theme['yellow-dark']};
-    font-size: 0.65rem;
+    font-size: 0.625rem;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 130%;
