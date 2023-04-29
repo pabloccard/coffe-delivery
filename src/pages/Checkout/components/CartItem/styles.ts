@@ -61,6 +61,10 @@ export const Footer = styled.div`
   justify-content: space-between;
   align-items: flex-end;
 
+  strong {
+    color: ${(props) => props.theme['base-text']};
+  }
+
   @media (min-width: 1168px) {
     strong {
       position: absolute;
