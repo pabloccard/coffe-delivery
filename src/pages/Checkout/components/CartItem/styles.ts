@@ -1,16 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  /* width: 23rem; */
-  /* height: 5rem; */
   position: relative;
 
   display: flex;
   align-items: center;
-  /* align-items: flex-start; */
+  align-items: flex-start;
   gap: 1.25rem;
-
-  /* padding: 0.5rem 0.25rem; */
 
   & + div {
     margin-top: 3rem;
@@ -19,7 +15,6 @@ export const Container = styled.div`
   &::before {
     content: '';
 
-    /* width: 23rem; */
     width: 100%;
     height: 1px;
     position: absolute;
@@ -41,24 +36,43 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  /* justify-content: space-between; */
+  width: calc(100% - 2.75rem);
 
   margin-bottom: 0.5rem;
 
-  span {
-    color: ${(props) => props.theme['base-subtitle']};
-    line-height: 130%;
+  p {
+    font-size: 0.75rem;
+    color: ${(props) => props.theme['base-label']};
   }
 
   strong {
     color: ${(props) => props.theme['base-text']};
     line-height: 130%;
-    font-size: 0.875rem;
+    font-size: 5rem;
+  }
+
+  @media (min-width: 1024px) {
+    margin-bottom: 1.5rem;
+  }
+`
+
+export const Footer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  @media (min-width: 1168px) {
+    strong {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
   }
 `
 
 export const Actions = styled.div`
   display: flex;
+  align-items: flex-end;
   gap: 0.5rem;
 
   height: 2rem;
@@ -81,13 +95,33 @@ export const Actions = styled.div`
     text-transform: uppercase;
     cursor: pointer;
 
-    svg {
-      color: ${(props) => props.theme.purple};
-      font-size: 1rem;
-    }
+    position: absolute;
+    top: 0;
+    right: 0;
 
     span {
       display: none;
     }
+
+    svg {
+      color: ${(props) => props.theme.purple};
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    button {
+      position: unset;
+      top: unset;
+      right: unset;
+
+      span {
+        display: inline;
+      }
+    }
+  }
+
+  @media (min-width: 1168px) {
+    margin-left: auto;
   }
 `

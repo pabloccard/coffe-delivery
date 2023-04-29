@@ -6,8 +6,8 @@ import {
   CurrencyDollar,
   MapPinLine,
   Money,
-  CaretCircleDoubleDown,
   CaretDown,
+  CaretUp,
 } from 'phosphor-react'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { useForm, Controller } from 'react-hook-form'
@@ -28,35 +28,59 @@ const FormScheme = z.object({
 
 type FormData = z.infer<typeof FormScheme>
 
+function methodTranslate(method: string) {
+  switch (method) {
+    case 'credit card':
+      return 'cartão de crédito'
+    case 'debit card':
+      return 'cartão de débito'
+    case 'cash':
+      return 'dinheiro'
+  }
+}
+
 export function Checkout() {
   const [addressSectionExpanded, setAddressSectionExpanded] = useState(false)
+  const [paymentSectionExpanded, setPaymentSectionExpanded] = useState(false)
 
-  const { register, handleSubmit, control } = useForm<FormData>({
+  console.log(paymentSectionExpanded)
+
+  const { register, handleSubmit, control, watch } = useForm<FormData>({
     resolver: zodResolver(FormScheme),
+    defaultValues: {
+      paymentMethod: 'credit card',
+    },
   })
 
   function sub(data: FormData) {
     console.log(data)
   }
 
+  const paymentMethod = methodTranslate(watch('paymentMethod'))
+
   return (
     <S.Container onSubmit={handleSubmit(sub)}>
       <div>
         <h2>Complete seu pedido</h2>
-        <S.AddressSection>
+        <S.AddressSection
+          onClick={() => setAddressSectionExpanded((prev) => !prev)}
+        >
           <S.SectionHeader iconColor="yellow-dark">
             <MapPinLine weight="regular" />
             <div>
               <h3>Endereço de Entrega</h3>
               <p>Informe o endereço onde deseja receber seu pedido</p>
             </div>
-            <S.SectionActionButton
-              onClick={() => setAddressSectionExpanded((prev) => !prev)}
-            >
-              <CaretDown weight="fill" />
-            </S.SectionActionButton>
+            <S.DinamicInfo>
+              {addressSectionExpanded ? (
+                <CaretUp weight="bold" />
+              ) : (
+                <CaretDown weight="bold" />
+              )}
+            </S.DinamicInfo>
           </S.SectionHeader>
           <S.InputsContainer
+            onClick={(e) => e.stopPropagation()}
             className={addressSectionExpanded ? 'expanded' : ''}
           >
             <input
@@ -101,39 +125,56 @@ export function Checkout() {
           </S.InputsContainer>
         </S.AddressSection>
 
-        {/* <S.PaymentSection>
+        <S.PaymentSection
+          onClick={() => setPaymentSectionExpanded((prev) => !prev)}
+        >
           <S.SectionHeader iconColor="purple">
             <CurrencyDollar weight="regular" />
             <div>
-              <h3>Pagamento</h3>
+              <h3>Pagamento </h3>
               <p>
                 O pagamento é feito na entrega. Escolha a forma que deseja pagar
               </p>
             </div>
+
+            <S.DinamicInfo>
+              <span>{paymentMethod}</span>
+
+              {paymentSectionExpanded ? (
+                <CaretUp weight="bold" />
+              ) : (
+                <CaretDown weight="bold" />
+              )}
+            </S.DinamicInfo>
           </S.SectionHeader>
 
-          <Controller
-            control={control}
-            name="paymentMethod"
-            rules={{ required: true }}
-            render={({ field: { onChange, value } }) => (
-              <S.PaymentOptions value={value} onValueChange={onChange}>
-                <RadioGroup.Item defaultChecked value="crédito">
-                  <CreditCard weight="regular" />
-                  Cartão de crédito
-                </RadioGroup.Item>
-                <RadioGroup.Item value="débito">
-                  <Bank weight="regular" />
-                  Cartão de débito
-                </RadioGroup.Item>
-                <RadioGroup.Item value="dinheiro">
-                  <Money weight="regular" />
-                  Dinheiro
-                </RadioGroup.Item>
-              </S.PaymentOptions>
-            )}
-          />
-        </S.PaymentSection> */}
+          <S.SectionPaymentContent
+            onClick={(e) => e.stopPropagation()}
+            className={paymentSectionExpanded ? 'expanded' : ''}
+          >
+            <Controller
+              control={control}
+              name="paymentMethod"
+              rules={{ required: true }}
+              render={({ field: { onChange, value } }) => (
+                <S.PaymentOptions value={value} onValueChange={onChange}>
+                  <RadioGroup.Item defaultChecked value="credit card">
+                    <CreditCard weight="regular" />
+                    Cartão de crédito
+                  </RadioGroup.Item>
+                  <RadioGroup.Item value="debit card">
+                    <Bank weight="regular" />
+                    Cartão de débito
+                  </RadioGroup.Item>
+                  <RadioGroup.Item value="cash">
+                    <Money weight="regular" />
+                    Dinheiro
+                  </RadioGroup.Item>
+                </S.PaymentOptions>
+              )}
+            />
+          </S.SectionPaymentContent>
+        </S.PaymentSection>
       </div>
       <div>
         <h2>Cafés selecionados</h2>

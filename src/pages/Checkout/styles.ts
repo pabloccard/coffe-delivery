@@ -2,8 +2,6 @@ import styled from 'styled-components'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 
 export const Container = styled.form`
-  /* width: 70rem; */
-  width: 100%;
   padding-top: 8rem;
 
   margin: 0 auto;
@@ -20,33 +18,75 @@ export const Container = styled.form`
     font-size: 1.125rem;
     line-height: 130%;
   }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: 1168px) {
+    grid-template-columns: 60% calc(40% - 2rem);
+  }
 `
 
-export const SectionActionButton = styled.button`
-  line-height: 0;
-  border: 0;
-  padding: 0.5rem;
-  background-color: ${(props) => props.theme['base-button']};
-  border-radius: 6px;
-  font-size: 1.375rem;
-  margin-left: auto;
-  color: ${(props) => props.theme.white};
+export const DinamicInfo = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  span {
+    color: ${(props) => props.theme['base-label']};
+    font-size: 0.75rem;
+  }
+
+  svg {
+    font-size: 1.25rem;
+  }
+
+  @media (min-width: 1024px) {
+    span {
+      display: none;
+    }
+  }
+
+  @media (min-width: 1168px) {
+    display: none;
+  }
+`
+
+export const SectionPaymentContent = styled.div`
+  display: none;
+
+  &.expanded {
+    display: block;
+  }
+
+  @media (min-width: 1168px) {
+    display: grid;
+  }
 `
 
 export const AddressSection = styled.section`
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
-  /* padding: 2.5rem; */
   padding: 1.5rem;
-  margin-bottom: 2rem;
+
+  margin-bottom: 0.75rem;
+  position: relative;
+
+  @media (min-width: 1168px) {
+    padding: 2.5rem;
+  }
 `
 
 export const InputsContainer = styled.div`
   display: none;
   margin-top: 2rem;
   grid-template-columns: 75% calc(25% - 0.75rem);
-  /* grid-template-columns: 200px 276px 60px; */
-  /* grid-template-rows: 1fr 1fr 1fr 1fr; */
   grid-column-gap: 0.75rem;
   grid-row-gap: 1rem;
 
@@ -63,13 +103,6 @@ export const InputsContainer = styled.div`
     grid-row: 3;
   }
 
-  /* input[id='street'] {
-    grid-column: 1/4;
-  } */
-  /* input[id='number'] {
-    grid-column: 1;
-  } */
-
   input {
     background: ${(props) => props.theme['base-input']};
     border: 1px solid ${(props) => props.theme['base-button']};
@@ -84,8 +117,6 @@ export const InputsContainer = styled.div`
   }
 
   label {
-    /* grid-column: 2/4; */
-
     position: relative;
 
     &::before {
@@ -101,14 +132,22 @@ export const InputsContainer = styled.div`
       font-style: italic;
     }
   }
+
+  @media (min-width: 1168px) {
+    display: grid;
+  }
 `
 
 export const PaymentSection = styled.section`
-  margin-top: 2rem;
-
   background: ${(props) => props.theme['base-card']};
   border-radius: 6px;
-  padding: 2.5rem;
+  padding: 1.5rem;
+
+  margin-bottom: 2rem;
+
+  @media (min-width: 1168px) {
+    padding: 2.5rem;
+  }
 `
 
 type SectionHeaderProps = {
@@ -117,22 +156,27 @@ type SectionHeaderProps = {
 
 export const PaymentOptions = styled(RadioGroup.Root)`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: 0.75rem;
+
+  margin-top: 2rem;
 
   button {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
+
+    position: relative;
+
     gap: 0.75rem;
 
+    padding-left: 1rem;
     height: 3.25rem;
 
     background: ${(props) => props.theme['base-button']};
     border: 1px solid transparent;
     border-radius: 6px;
     cursor: pointer;
-    padding-left: 1rem;
 
     color: ${(props) => props.theme['base-text']};
     font-family: 'Roboto', sans-serif;
@@ -149,6 +193,47 @@ export const PaymentOptions = styled(RadioGroup.Root)`
     svg {
       font-size: 1rem;
       color: ${(props) => props.theme.purple};
+      position: absolute;
+      left: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    button {
+      justify-content: flex-start;
+
+      svg {
+        position: unset;
+        left: unset;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr;
+
+    button {
+      justify-content: center;
+
+      svg {
+        position: absolute;
+        left: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1168px) {
+    grid-template-columns: 1fr 1fr 1fr;
+
+    button {
+      justify-content: flex-start;
+
+      svg {
+        position: unset;
+        left: unset;
+      }
     }
   }
 `
@@ -157,10 +242,10 @@ export const SectionHeader = styled.header<SectionHeaderProps>`
   display: flex;
   width: 100%;
   align-items: center;
-  /* gap: 0.5rem; */
 
-  /* margin-bottom: 2rem; */
-  /* height: 2.75rem; */
+  padding-right: 2.5rem;
+
+  position: relative;
 
   > svg {
     color: ${(props) =>
@@ -183,5 +268,13 @@ export const SectionHeader = styled.header<SectionHeaderProps>`
     font-size: 0.875rem;
     line-height: 21px;
     display: none;
+  }
+
+  @media (min-width: 768px) {
+    align-items: flex-start;
+
+    p {
+      display: inline;
+    }
   }
 `

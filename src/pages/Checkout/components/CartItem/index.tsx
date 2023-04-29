@@ -32,15 +32,19 @@ export const CartItem = ({
       <S.Content>
         <S.Header>
           <span>{title}</span>
-          <strong>{totalPrice}</strong>
+          <p>Bebida adocicada preparada com café e leite de coco</p>
         </S.Header>
-        <S.Actions>
-          <QuantitySelector />
-          <button type="button" onClick={handleRemoveProduct}>
-            <Trash />
-            <span>REMOVER</span>
-          </button>
-        </S.Actions>
+        <S.Footer>
+          <strong>{totalPrice}</strong>
+
+          <S.Actions>
+            <button type="button" onClick={handleRemoveProduct}>
+              <Trash />
+              <span>REMOVER</span>
+            </button>
+            <QuantitySelector />
+          </S.Actions>
+        </S.Footer>
       </S.Content>
     </S.Container>
   )
