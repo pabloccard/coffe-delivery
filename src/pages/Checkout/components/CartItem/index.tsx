@@ -6,7 +6,7 @@ import { priceFormatter } from '../../../../utils/priceFormatter'
 import { useCart } from '../../../../hooks/useCart'
 
 export const CartItem = ({
-  data: { img, title, price, amount, id },
+  data: { img, title, price, amount, id, description },
 }: {
   data: CartProduct
 }) => {
@@ -32,7 +32,7 @@ export const CartItem = ({
       <S.Content>
         <S.Header>
           <span>{title}</span>
-          <p>Bebida adocicada preparada com café e leite de coco</p>
+          <p>{description}</p>
         </S.Header>
         <S.Footer>
           <strong>{totalPrice}</strong>

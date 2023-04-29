@@ -32,6 +32,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
           title: data.title,
           price: data.price,
           img: data.img,
+          description: data.description,
           amount,
         }
 
